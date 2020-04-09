@@ -1,3 +1,10 @@
+/*
+Problem Statement - 
+We are given an array A of N elements and Q queries. Each query consists of 3 integers L R K.
+For each query, we have to find the number of elements Ax1, Ax2,….,Axj>=K, where L<=x1, x2,…xj<=R.
+*/
+
+
 #include<bits/stdc++.h>
 using namespace std;
 vector<int> merge(vector<int> v1, vector<int> v2){
@@ -36,7 +43,7 @@ void build(int a[], vector<vector<int>>& tree, int tl, int tr, int index){
     }
     return;
 }
-int less_eq_k(vector<int>& a, int k){
+int greater_eq_k(vector<int>& a, int k){
     int s=0,e=a.size()-1,res;
     int n=e,mid;
     while(s<=e){
@@ -61,7 +68,7 @@ int query(vector<vector<int>>& tree, int tl, int tr, int l, int r,int k, int ind
         return 0;
     }
     if(tl==l&&tr==r){
-        return less_eq_k(tree[index],k);
+        return greater_eq_k(tree[index],k);
     }
     int tm = (tl+tr)/2;
     int left = query(tree,tl,tm,l,min(r,tm),k,2*index);
