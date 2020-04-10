@@ -2,6 +2,47 @@
 #define forn(i,a,b) for(int i=a; i<b; ++i)
 using namespace std;
 
+// Reference for Studying Segment Tree -   https://cp-algorithms.com/data_structures/segment_tree.html
+// I cannot share the link to this Problem Statement due to some reasons, So I have tried to picture the Problem Statement here.
+
+
+/* 
+
+Problem Statement 
+
+
+You are given an array A of n elements and Q queries. Each query can be of following types:
+
+    1 L R: Print the minimum value in AL, AL+1, AL+2….,AR.
+    2 X Y: Update the value of Ax with Y.
+
+Input Format 
+
+First line contains integers N and Q, denoting the number of elements and number of queries.
+Next line contains N integers, denoting A1, A2, A3….,AN. Next Q lines contains Q queries.
+
+Constraints
+
+1<=N,Q<=10^5 |Ai|,|Y|<=10^9 1<=L,R,X<=N
+
+Sample Input
+
+5 5
+1 4 3 5 2
+1 1 5
+2 3 9
+1 2 4
+1 2 5
+1 3 4
+
+Corresponding Output
+
+1
+4
+2
+5
+
+*/
 void build(int a[],int tree[], int tl, int tr, int index){
 
     if(tl==tr){
