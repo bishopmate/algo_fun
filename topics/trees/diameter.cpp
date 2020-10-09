@@ -15,6 +15,16 @@ Sample Input
 Sample Output
 Diameter's length is 5
 The diameter is -> 3-2-1-5-6-7
+
+The algorithm that I followed is as below:
+1) Pick any node as root.
+2) Perform a BFS from the chosen root.
+3) Pick the farthest node from the previous root as your new root(This new root will also be one of the end points of your Diameter).
+4) Perform a BFS from the new Root and the farthest node from this new Root is our second end Point of the Diameter.
+5) Trace the diameter with the help of Parent Array from the second end Point that we just found backwards.
+
+I would suggest to perform a DRY run with pen and paper with an example(You can always choose the Sample Input Provided) to understand
+this Algorithm even better and why it works.
 */
 void bfs(int src, int parent, int parents[], int distance[],bool visited[], map<int, vector<int>>& graph){
   queue<int> q;
