@@ -19,6 +19,7 @@ Sample Output
 3 4 Weight - 2
 1 4 Weight - 3
 4 6 Weight - 4
+The total sum of weight of the edges is 12
 */
 
 class DSU{
@@ -85,5 +86,6 @@ int main(){
   for(auto edgeMST : MST){
     cout<<edgeMST.second.first<<" "<<edgeMST.second.second<<" Weight - "<<edgeMST.first<<"\n";
   }
+  cout<<"The total sum of weight of the edges is "<<costMST<<"\n";
   return 0;
 }
