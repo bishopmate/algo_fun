@@ -18,7 +18,7 @@ int rec(string s,int i, int j, int n){
   return mxm;
 }
 
-int tabulationDP(string s){
+string tabulationDP(string s){
   int n = s.size();
   vector<vector<int>> dp(n, vector<int>(n, 0));
 
@@ -31,7 +31,29 @@ int tabulationDP(string s){
       }
     }
   }
-  return dp[n-1][n-1];
+  // return dp[n-1][n-1];
+  vector<char> helper;
+  int j = n-1, i = n-1;
+  while(j >= 0){
+    if(i == 0){
+      if(dp[i][j] > dp[i][j-1]){
+        helper.push_back(s[j]);
+      }
+    }else{
+      if(dp[i][j] > dp[i-1][j-1]){
+        helper.push_back(s[j]);
+        i--;
+      }
+      j--;
+    }
+  }
+  int lrsLength = dp[n-1][n-1];
+  string lrs;
+  lrs.resize(lrsLength,'x');
+  for(int i=0, j=lrsLength-1; i<lrsLength; i++, j--){
+    lrs[i] = helper[j];
+  }
+  return lrs;
 }
 
 int main(){
@@ -41,10 +63,11 @@ int main(){
   if(n < 2){
     cout<<"Chotta String kaa kuch nahi ho sakta\n";
   }else{
-    int lisLength = rec(s,0,1,n);
-    cout<<lisLength<<endl;
-    int lisTabLength = tabulationDP(s);
-    cout<<lisTabLength<<endl;
+    int lrsLength = rec(s,0,1,n);
+    cout<<"The length of LRS is "<<lrsLength<<" by recursion"<<endl;
+    string lrs = tabulationDP(s);
+    int lrsLength2 = lrs.size();
+    cout<<"LRS retrieved by Tabulation Method is \""<<lrs<<"\" and it's length is also "<<lrsLength2<<" "<<endl;
   }
   return 0;
 
