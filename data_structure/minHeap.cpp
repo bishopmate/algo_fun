@@ -41,7 +41,7 @@ int main(){
         switch(c){
             case '1' : {// insert
                 if(a[last] != -1){
-                    a.resize(2*(last+1), -1);// Increasing the size
+                    a.resize(2*(last+1), -1);// Increasing the size by 2 times if we have reached the limit of size
                 }
                 int val;
                 cin>>val;
@@ -71,7 +71,7 @@ int main(){
                     cout<<"The heap is empty\n";break;
                 }
                 if(a[last/2] == -1){
-                    a.resize(last/2+1);
+                    a.resize(last/2+1);// reducing the size by half if half of the space is empty
                 }
                 cout<<a[0]<<" is now the minimum element\n";
                 cout<<"The heap is [";
